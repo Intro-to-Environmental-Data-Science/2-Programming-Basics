@@ -87,7 +87,7 @@ name <- "JP"
 
 ## Using functions
 
-![](images/Function syntax.png)
+![](images/Function%20syntax.png)
 
 As an example, let's try the seq() function, which creates a sequence of numbers.
 
@@ -153,7 +153,7 @@ We will demo five functions below:
 
 With all of these, the first argument is the data and then the arguments after that specify what you want the function to do.
 
-![](images/dplyr functions.png)
+![](images/dplyr%20functions.png)
 
 ## Filter
 
@@ -246,7 +246,7 @@ summarize(rbistate, meanrbi = mean(RBI), maxrbi = max(RBI), minrbi = min(RBI))
 
 ## Multiple operations with pipes
 
-The pipe operator %\>% allows you to perform multiple operations in a sequence without saving intermediate steps. Not only is this more efficient, but structuring operations with pipes is also more intuitive than nesting functions within functions (the other way you can do multiple operations).
+The pipe operator \|\> allows you to perform multiple operations in a sequence without saving intermediate steps. Not only is this more efficient, but structuring operations with pipes is also more intuitive than nesting functions within functions (the other way you can do multiple operations).
 
 ### Let's say we want to tell R to make a PB&J sandwich by using the pbbread(), jbread(), and joinslices() functions and the data "ingredients". If we do this saving each step if would look like this:
 
@@ -264,22 +264,22 @@ Efficient... but tough to read/interpret
 
 ### Using the pipe it would look like this
 
-> ingredients %\>%\
-> pbbread() %\>%\
-> jbread() %\>%\
+> ingredients \|\>\
+> pbbread() \|\>\
+> jbread() \|\>\
 > joinslices()
 
 Much easier to follow!
 
 ### When you use the pipe, it basically takes whatever came out of the first function and puts it into the data argument for the next one
 
-**so rbi %\>% group_by(STATE) is the same as group_by(rbi, STATE)**
+**so rbi \|\> group_by(STATE) is the same as group_by(rbi, STATE)**
 
 Take the groupby and summarize code from above and perform the operation using the pipe
 
 ```{r echo=TRUE}
-rbi %>%
-  group_by(STATE) %>%
+rbi |>
+  group_by(STATE) |>
   summarize(meanrbi = mean(RBI), maxrbi = max(RBI), minrbi = min(RBI))
 
 ```
@@ -297,8 +297,8 @@ So you can do the assignment at the beginning of the end of your dplyr workings,
 Use the assignment operator to save the summary table you just made.
 
 ```{r echo=TRUE}
-stateRBIs <- rbi %>%
-  group_by(STATE) %>%
+stateRBIs <- rbi |>
+  group_by(STATE) |>
   summarize(meanrbi = mean(RBI), maxrbi = max(RBI), minrbi = min(RBI))
 
 # Notice when you do this it doesn't output the result... 
