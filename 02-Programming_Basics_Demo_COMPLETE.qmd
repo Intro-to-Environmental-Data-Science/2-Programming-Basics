@@ -1,7 +1,9 @@
 ---
 title: "Programming Basics"
-output: html_document
-date: "2025-09-04"
+date: today
+format:
+  html:
+    embed-resources: true
 ---
 
 ```{r setup, include=FALSE}
